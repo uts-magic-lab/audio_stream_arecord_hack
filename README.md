@@ -31,6 +31,22 @@ Easiest way is to change the launchfile that looks like:
 </launch>
 ```
 
+# Plot audio data
+     rosrun audio_stream_arecord_hack audio_topic_plotter.py
+
+Change the topic with:
+
+     rosrun audio_stream_arecord_hack audio_topic_plotter.py /audio_stream/audio_data:=/your_AudioData_topic
+
+![audio plot](audio_plot.gif)
+
+Requires:
+```
+sudo pip install pyqtgraph
+sudo apt-get install python-qt4
+sudo apt-get install python-numpy
+```
+
 # Hacky slow terminal plotting of audio data
 Just in case you need a super basic way of plotting the audio data... you can use `gnuplot_audio_data.py` script. It calls with subprocess `gnuplot`.
 
