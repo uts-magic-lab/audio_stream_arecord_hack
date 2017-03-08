@@ -60,7 +60,7 @@ if __name__ == '__main__':
                        "-r", "16000",
                        "-t", "raw"]
     if len(argv) > 1:
-        block_size = argv[1]
+        block_size = int(argv[1])
         if len(argv) > 2:
             arecord_command = argv[2:]
 
