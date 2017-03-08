@@ -1,0 +1,8 @@
+<launch>
+    <node name="audio_stream" 
+          pkg="audio_stream_arecord_hack"
+          type="audio_streamer_arecord.py" 
+          output="screen"
+          args="2048 arecord -f S16_LE -r 16000 -t raw">
+          <!-- first argument is blocksize, the rest is the full arecord command -->
+</launch>

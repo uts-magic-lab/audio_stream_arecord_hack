@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>audio_stream_arecord_hack</name>
+  <version>0.0.0</version>
+  <description>The audio_stream_arecord_hack package contains a simple node
+    to stream audio from a recording device by using an arecord command
+    which should work in most machines without the need of extra dependences.</description>
+
+  <maintainer email="Sammy.Pfeiffer@student.uts.edu.au">Sammy Pfeiffer</maintainer>
+
+  <license>BSD</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rospy</build_depend>
+  <run_depend>rospy</run_depend>
+
+
+</package>
