@@ -11,7 +11,7 @@ import numpy as np
 # Author: Sammy Pfeiffer
 
 
-class AudioPlotSub(object):
+class AudioPlotSub(QtGui.QMainWindow):
     def __init__(self, plot_ms_update=30, buffer_blocks=16):
         rospy.loginfo("Initializing AudioPlotSub...")
         self.plot_ms_update = plot_ms_update
@@ -31,7 +31,7 @@ class AudioPlotSub(object):
         self.timer.timeout.connect(self.plot_vals)
         while not self.configured and not rospy.is_shutdown():
             rospy.sleep(0.1)
-        QtGui.QApplication.instance().exec_()
+        # QtGui.QApplication.instance().exec_()
 
     def configure_plot(self, blocksize):
         self.block_size = blocksize
@@ -71,8 +71,10 @@ class AudioPlotSub(object):
 
 if __name__ == '__main__':
     rospy.init_node('audio_plotter')
+    app = QtGui.QApplication(["plot audio"])
     as_ = AudioPlotSub()
-    rospy.spin()
+    as_.show()
+    # rospy.spin()
     # rospy.loginfo(
     #     "Waiting for plot to be configured with the first message received...")
     # while not as_.configured:
@@ -83,4 +85,5 @@ if __name__ == '__main__':
     # except KeyboardInterrupt:
     #     print "Control+C requested..."
 
+    app.exec_()
     as_.close()

@@ -30,3 +30,34 @@ Easiest way is to change the launchfile that looks like:
           <!-- first argument is blocksize, the rest is the full arecord command -->
 </launch>
 ```
+
+# Hacky slow terminal plotting of audio data
+Just in case you need a super basic way of plotting the audio data... you can use `gnuplot_audio_data.py` script. It calls with subprocess `gnuplot`.
+
+You may want to tune up the line ` gnuplot.stdin.write("set term dumb 200 60\n")` which sets the number of characters on X and Y to use for the plot.
+
+Looks like this:
+```
+  40000 ++---------+-----------+----------+----------+-----------+---------++
+        +          +           +          +          +         Line1 **A*** +
+  30000 ++ A                           AA   A  A    A AA     AA A          ++
+        |  A                           *A   AAAA    A AAAA   AAAA           |
+        |  A      A      A             AA   AA**    A A*AA   *AAA           |
+  20000 ++ A      A      A      A      A*   *A*A   AA*AAAA A AAAA A        ++
+        | AA     AA  A A A      A      AA   AAA* A A A*AAA AA **A A         |
+  10000 ++AA     AA AA A A*     AAA  A *A   *A*A A A A AAA AA AA* A        ++
+        | AA     AA AA A AA     AAAA A AA   AAA* A A A AAAA A AAA A         |
+        | * AAA  * AAA *AAA A   A*AA A *AAA AA*A A A A A*AA A *AAA          |
+      0 A+A AAA  A **A AAAA A A AA** A AAAA AAA *AAA A AAAA A AA A         ++
+        A A *AA  A AAA AA AAA AAAAAAA AAAAA AA* AAAA A AA A A *A A          |
+ -10000 A+A AAAA A *AAAAA AAAAAA *AAA AAAAAAA*A A AA   AA A A AA A         ++
+        AAA *AAA A A* AA  AAAAAA AAAA AA AAAAAA A A    A  A   A*            |
+        |AA AAAAAA AA AA  AA AAA AA*A AA A A AA A A           *A            |
+ -20000 ++A AAA AA AA AA  AA     AAAA A* A   *A A A           AA           ++
+        |   A   AA AA AA  AA     AAAA AA     AA                             |
+ -30000 ++  A   AA AA A   AA     AAAA A      *A                            ++
+        |   A   A  AA A   AA     AA   A      AA                             |
+        +          +           +          +          +           +          +
+ -40000 ++---------+-----------+----------+----------+-----------+---------++
+        0         200         400        600        800         1000       1200
+```
